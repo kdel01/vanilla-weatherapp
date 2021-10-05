@@ -1,0 +1,70 @@
+body {
+  background-color: rgb(123, 193, 240);
+}
+
+h1 {
+  text-align: center;
+  font-size: 48px;
+  font-family: "Zilla Slab", serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 36px;
+  font-family: "Zilla Slab", serif;
+  font-weight: 600;
+}
+
+h3 {
+  text-align: center;
+  font-size: 25px;
+  font-family: "Zilla Slab", serif;
+  font-weight: 600;
+}
+
+footer {
+  color: rgb(0, 0, 0);
+  font-family: "Playfair Display", serif;
+  text-align: right;
+  font-size: 15px;
+}
+
+.container {
+  padding: 20px 20px;
+}
+
+.card {
+  margin: auto;
+  padding: 20px 20px;
+  border-radius: 40px;
+}
+
+.day,
+.forcast-temp {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+.current-icon {
+  text-align: center;
+  font-size: 60px;
+  color: rgb(17, 143, 228);
+}
+
+.icon {
+  text-align: center;
+  font-size: 40px;
+  color: rgb(123, 193, 240);
+}
+
+.search-form {
+  text-align: center;
+}
+
+.current-heading {
+  text-align: center;
+  font-size: 36px;
+  font-family: "Zilla Slab", serif;
+  font-weight: 600;
+}
