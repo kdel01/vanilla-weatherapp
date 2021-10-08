@@ -1,7 +1,7 @@
 // change temp after search
 function showTemp(response) {
   let city = response.data.name;
-  let tempC = Math.round(response.data.main.temp);
+  tempC = Math.round(response.data.main.temp);
   let description = response.data.weather[0].description;
   let humidity = response.data.main.humidity;
   let wind = Math.round(response.data.wind.speed);
@@ -94,15 +94,30 @@ h3.innerHTML = `${day}, ${hour}:${minute}`;
 // Change temp from F to C
 function changeToC(event) {
   event.preventDefault();
-  let tempC = document.querySelector("#temperature");
-  tempC.innerHTML = "17";
+  let temp = document.querySelector("#temperature");
+  let unit = document.querySelector("#current-units");
+
+  celcius.classList.add("active");
+  faren.classList.remove("active");
+
+  temp.innerHTML = Math.round(tempC);
+  unit.innerHTML = " ºC";
 }
-//Change Temp from F to C
+//Change Temp from C to F
 function changeToF(event) {
   event.preventDefault();
-  let tempC = document.querySelector("#temperature");
-  tempC.innerHTML = "66";
+  let temp = document.querySelector("#temperature");
+  let unit = document.querySelector("#current-units");
+
+  celcius.classList.remove("active");
+  faren.classList.add("active");
+
+  let tempF = (tempC * 9) / 5 + 32;
+  temp.innerHTML = Math.round(tempF);
+  unit.innerHTML = " ºF";
 }
+
+let tempC = null;
 
 let makeCel = document.querySelector("#celcius");
 makeCel.addEventListener("click", changeToC);

@@ -1,24 +1,22 @@
 body {
   background-color: rgb(123, 193, 240);
+  font-family: "Zilla Slab", serif;
 }
 
 h1 {
   text-align: center;
   font-size: 48px;
-  font-family: "Zilla Slab", serif;
 }
 
 h2 {
   text-align: center;
   font-size: 36px;
-  font-family: "Zilla Slab", serif;
   font-weight: 600;
 }
 
 h3 {
   text-align: center;
   font-size: 25px;
-  font-family: "Zilla Slab", serif;
   font-weight: 600;
 }
 
@@ -31,9 +29,9 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
-
-  color: rgb(135, 135, 135);
-  font-size: 16px;
+  text-align: left;
+  color: rgb(100, 100, 100);
+  font-size: 18px;
   font-weight: 100;
   line-height: 19px;
 }
@@ -70,12 +68,6 @@ footer {
   font-family: "Playfair Display", serif;
 }
 
-.current-icon {
-  text-align: center;
-  font-size: 60px;
-  color: rgb(17, 143, 228);
-}
-
 .icon {
   text-align: center;
   font-size: 40px;
@@ -91,4 +83,8 @@ footer {
   font-size: 36px;
   font-family: "Zilla Slab", serif;
   font-weight: 600;
+}
+
+.major-details {
+  text-align: right;
 }
