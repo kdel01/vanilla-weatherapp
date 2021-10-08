@@ -1,13 +1,28 @@
 // change temp after search
 function showTemp(response) {
   let city = response.data.name;
-  let temp = Math.round(response.data.main.temp);
-
+  let tempC = Math.round(response.data.main.temp);
+  let description = response.data.weather[0].description;
+  let humidity = response.data.main.humidity;
+  let wind = Math.round(response.data.wind.speed);
+  let icon = document.querySelector("#current-icon");
+  console.log(description);
   let h2 = document.querySelector("#current-city");
   h2.innerHTML = `Current City: ${city}`;
 
   let displayTemp = document.querySelector("#temperature");
-  displayTemp.innerHTML = `${temp}`;
+  let displayDescrip = document.querySelector("#describe");
+  let displayHumidity = document.querySelector("#humidity");
+  let displayWind = document.querySelector("#wind");
+  displayTemp.innerHTML = `${tempC}`;
+  displayDescrip.innerHTML = `${description}`;
+  displayHumidity.innerHTML = `${humidity}`;
+  displayWind.innerHTML = `${wind}`;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 // Display City Name After Search
@@ -94,3 +109,5 @@ makeCel.addEventListener("click", changeToC);
 
 let makeFar = document.querySelector("#faren");
 makeFar.addEventListener("click", changeToF);
+
+searchCity("Sydney");

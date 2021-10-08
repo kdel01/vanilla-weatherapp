@@ -34,102 +34,131 @@
       <div class="card">
         <h1>Weather Around the World</h1>
         <h3 class="date"></h3>
-        <div class="row">
-          <div class="col-4"></div>
-          <div class="col-4">
-            <div class="search-form">
-              <form id="form">
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search City"
-                    id="search-city"
-                    size="10"
-                  />
+        <div class="weather-app">
+          <form id="form">
+            <div class="row">
+              <div class="col-3 empty-space"></div>
+
+              <div class="col-3">
+                <div class="search-form">
+                  <div class="mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Search City"
+                      id="search-city"
+                      size="10"
+                    />
+                  </div>
                 </div>
+              </div>
+
+              <div class="col-3">
                 <button type="submit" class="btn btn-success" id="search">
                   Search
                 </button>
                 <button type="button" class="btn btn-info" id="myLocation">
                   My Location
                 </button>
-              </form>
-            </div>
-            <div class="col-4"></div>
-          </div>
-        </div>
+              </div>
 
-        <div class="current-selection">
-          <div class="current-heading">
-            <h2 id="current-city">Current City: Sydney</h2>
-          </div>
-          <div class="current-heading">
-            <span id="heading">Current Temp: </span>
-            <span id="temperature">17 </span>
-            <span>
-              <a href="#" class="celcius" id="celcius">ºC</a>
-              |
-              <a href="#" class="faren" id="faren">ºF</a>
-            </span>
-            <div class="current-icon">
-              <i class="fas fa-sun"></i>
+              <div class="col-3 empty-space"></div>
             </div>
-          </div>
-        </div>
+          </form>
 
-        <hr />
+          <div class="current-selection">
+            <div class="current-heading">
+              <h2 id="current-city"></h2>
+            </div>
+            <div class="current-heading">
+              <span id="heading">Current Temp: </span>
+              <span>
+                <a href="#" class="celcius" id="celcius">ºC</a>
+                |
+                <a href="#" class="faren" id="faren">ºF</a>
+              </span>
 
-        <div class="week">
-          <div class="row">
-            <div class="col">
-              <div class="day">Monday</div>
-              <div class="icon">
-                <i class="fas fa-cloud-sun"></i>
+              <div class="row">
+                <div class="col-3 empty-space"></div>
+                <div class="col-3 major-details">
+                  <div>
+                    <span id="temperature"></span>
+                    <span id="units"> ºC</span>
+                  </div>
+                  <div class="current-icon">
+                    <img
+                      src=""
+                      alt="Clear"
+                      id="current-icon"
+                      class="float-left"
+                    />
+                  </div>
+                </div>
+                <div class="col-3 minor-details">
+                  <ul>
+                    <li id="describe"></li>
+                    <li>Humidity: <span id="humidity"></span>%</li>
+                    <li>Wind: <span id="wind"></span> m/h</li>
+                  </ul>
+                </div>
+                <div class="col-3 empty-space"></div>
               </div>
-              <div class="forcast-temp">23ºC</div>
             </div>
-            <div class="col">
-              <div class="day">Tuesday</div>
-              <div class="icon">
-                <i class="fas fa-cloud"></i>
+          </div>
+
+          <hr />
+
+          <div class="week">
+            <div class="row">
+              <div class="col">
+                <div class="day">Monday</div>
+                <div class="icon">
+                  <i class="fas fa-cloud-sun"></i>
+                </div>
+                <div class="forcast-temp">23ºC</div>
               </div>
-              <div class="forcast-temp">18ºC</div>
-            </div>
-            <div class="col">
-              <div class="day">Wednesday</div>
-              <div class="icon">
-                <i class="fas fa-cloud-showers-heavy"></i>
+              <div class="col">
+                <div class="day">Tuesday</div>
+                <div class="icon">
+                  <i class="fas fa-cloud"></i>
+                </div>
+                <div class="forcast-temp">18ºC</div>
               </div>
-              <div class="forcast-temp">15ºC</div>
-            </div>
-            <div class="col">
-              <div class="day">Thursday</div>
-              <div class="icon">
-                <i class="fas fa-snowflake"></i>
+              <div class="col">
+                <div class="day">Wednesday</div>
+                <div class="icon">
+                  <i class="fas fa-cloud-showers-heavy"></i>
+                </div>
+                <div class="forcast-temp">15ºC</div>
               </div>
-              <div class="forcast-temp">10ºC</div>
-            </div>
-            <div class="col">
-              <div class="day">Friday</div>
-              <div class="icon">
-                <i class="fas fa-cloud-showers-heavy"></i>
+              <div class="col">
+                <div class="day">Thursday</div>
+                <div class="icon">
+                  <i class="fas fa-snowflake"></i>
+                </div>
+                <div class="forcast-temp">10ºC</div>
               </div>
-              <div class="forcast-temp">16ºC</div>
-            </div>
-            <div class="col">
-              <div class="day">Saturday</div>
-              <div class="icon">
-                <i class="fas fa-cloud-sun"></i>
+              <div class="col">
+                <div class="day">Friday</div>
+                <div class="icon">
+                  <i class="fas fa-cloud-showers-heavy"></i>
+                </div>
+                <div class="forcast-temp">16ºC</div>
               </div>
-              <div class="forcast-temp">20ºC</div>
-            </div>
-            <div class="col">
-              <div class="day">Sunday</div>
-              <div class="icon">
-                <i class="fas fa-bolt"></i>
+              <div class="col">
+                <div class="day">Saturday</div>
+                <div class="icon">
+                  <i class="fas fa-cloud-sun"></i>
+                </div>
+                <div class="forcast-temp">20ºC</div>
               </div>
-              <div class="forcast-temp">24ºC</div>
+              <div class="col">
+                <div class="day">Sunday</div>
+                <div class="icon">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <div class="forcast-temp">24ºC</div>
+              </div>
             </div>
           </div>
         </div>
