@@ -33,7 +33,7 @@
     <div class="container">
       <div class="card">
         <h1>Weather Around the World</h1>
-        <h3 class="date"></h3>
+        <h3 class="date" id="date"></h3>
         <div class="weather-app">
           <form id="form">
             <div class="row">
@@ -108,59 +108,7 @@
 
           <hr />
 
-          <div class="week">
-            <div class="row">
-              <div class="col">
-                <div class="day">Monday</div>
-                <div class="icon">
-                  <i class="fas fa-cloud-sun"></i>
-                </div>
-                <div class="forcast-temp">23ºC</div>
-              </div>
-              <div class="col">
-                <div class="day">Tuesday</div>
-                <div class="icon">
-                  <i class="fas fa-cloud"></i>
-                </div>
-                <div class="forcast-temp">18ºC</div>
-              </div>
-              <div class="col">
-                <div class="day">Wednesday</div>
-                <div class="icon">
-                  <i class="fas fa-cloud-showers-heavy"></i>
-                </div>
-                <div class="forcast-temp">15ºC</div>
-              </div>
-              <div class="col">
-                <div class="day">Thursday</div>
-                <div class="icon">
-                  <i class="fas fa-snowflake"></i>
-                </div>
-                <div class="forcast-temp">10ºC</div>
-              </div>
-              <div class="col">
-                <div class="day">Friday</div>
-                <div class="icon">
-                  <i class="fas fa-cloud-showers-heavy"></i>
-                </div>
-                <div class="forcast-temp">16ºC</div>
-              </div>
-              <div class="col">
-                <div class="day">Saturday</div>
-                <div class="icon">
-                  <i class="fas fa-cloud-sun"></i>
-                </div>
-                <div class="forcast-temp">20ºC</div>
-              </div>
-              <div class="col">
-                <div class="day">Sunday</div>
-                <div class="icon">
-                  <i class="fas fa-bolt"></i>
-                </div>
-                <div class="forcast-temp">24ºC</div>
-              </div>
-            </div>
-          </div>
+          <div class="weather-forecast" id="weather-forecast"></div>
         </div>
       </div>
       <footer>

@@ -1,3 +1,85 @@
+// Display Current Date and Time
+
+function checkMins(i) {
+  if (i < 10) {
+    i = "0" + i;
+  } else {
+    i = i;
+  }
+  return i;
+}
+
+function currentDate(timestamp) {
+  let now = new Date(timestamp);
+  let hour = now.getHours();
+  let minute = checkMins(now.getMinutes());
+
+  let week = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = week[now.getDay()];
+
+  return `${day}, ${hour}:${minute}`;
+}
+
+function formatDay(timestamp) {
+  let now = new Date(timestamp * 1000);
+  let day = now.getDay();
+  let week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return week[day];
+}
+
+// Display Forecast
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+      <div class="col">
+        <div class="forecast-day">${formatDay(forecastDay.dt)}</div>
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="50"
+        />
+        <div class="forecast-temp">
+          <span class="forecast-temp-min"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span> | 
+          <span class="forecast-temp-max"> ${Math.round(
+            forecastDay.temp.max
+          )}° </span>
+        </div>
+      </div>
+  `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coord) {
+  let apiKey = "f300ea07549b278ccdffad6a05e9faa5";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 // change temp after search
 function showTemp(response) {
   let city = response.data.name;
@@ -10,6 +92,7 @@ function showTemp(response) {
   let h2 = document.querySelector("#current-city");
   h2.innerHTML = `Current City: ${city}`;
 
+  let dateElement = document.querySelector("#date");
   let displayTemp = document.querySelector("#temperature");
   let displayDescrip = document.querySelector("#describe");
   let displayHumidity = document.querySelector("#humidity");
@@ -18,11 +101,14 @@ function showTemp(response) {
   displayDescrip.innerHTML = `${description}`;
   displayHumidity.innerHTML = `${humidity}`;
   displayWind.innerHTML = `${wind}`;
+  dateElement.innerHTML = currentDate(response.data.dt * 1000);
   icon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 // Display City Name After Search
@@ -61,35 +147,6 @@ function findLocation(event) {
 let locationButton = document.querySelector("#myLocation");
 locationButton.addEventListener("click", findLocation);
 
-// Display Current Date and Time
-
-function checkMins(i) {
-  if (i < 10) {
-    i = "0" + i;
-  } else {
-    i = i;
-  }
-  return i;
-}
-
-let now = new Date();
-let hour = now.getHours();
-let minute = checkMins(now.getMinutes());
-
-let week = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = week[now.getDay()];
-
-let h3 = document.querySelector("h3");
-h3.innerHTML = `${day}, ${hour}:${minute}`;
-
 //Temp Translations
 // Change temp from F to C
 function changeToC(event) {
@@ -126,3 +183,4 @@ let makeFar = document.querySelector("#faren");
 makeFar.addEventListener("click", changeToF);
 
 searchCity("Sydney");
+displayForecast();
