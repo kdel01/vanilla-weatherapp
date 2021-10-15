@@ -1,18 +1,12 @@
 // Display Current Date and Time
-
-function checkMins(i) {
-  if (i < 10) {
-    i = "0" + i;
-  } else {
-    i = i;
-  }
-  return i;
-}
-
-function currentDate(timestamp) {
-  let now = new Date(timestamp);
+function currentDate() {
+  let now = new Date();
   let hour = now.getHours();
-  let minute = checkMins(now.getMinutes());
+  let mins = now.getMinutes();
+
+  if (mins < 10) {
+    mins = `0${mins}`;
+  }
 
   let week = [
     "Sunday",
@@ -25,7 +19,7 @@ function currentDate(timestamp) {
   ];
   let day = week[now.getDay()];
 
-  return `${day}, ${hour}:${minute}`;
+  return `${day}, ${hour}:${mins}`;
 }
 
 function formatDay(timestamp) {
@@ -101,7 +95,7 @@ function showTemp(response) {
   displayDescrip.innerHTML = `${description}`;
   displayHumidity.innerHTML = `${humidity}`;
   displayWind.innerHTML = `${wind}`;
-  dateElement.innerHTML = currentDate(response.data.dt * 1000);
+  dateElement.innerHTML = currentDate();
   icon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -146,41 +140,6 @@ function findLocation(event) {
 
 let locationButton = document.querySelector("#myLocation");
 locationButton.addEventListener("click", findLocation);
-
-//Temp Translations
-// Change temp from F to C
-function changeToC(event) {
-  event.preventDefault();
-  let temp = document.querySelector("#temperature");
-  let unit = document.querySelector("#current-units");
-
-  celcius.classList.add("active");
-  faren.classList.remove("active");
-
-  temp.innerHTML = Math.round(tempC);
-  unit.innerHTML = " ºC";
-}
-//Change Temp from C to F
-function changeToF(event) {
-  event.preventDefault();
-  let temp = document.querySelector("#temperature");
-  let unit = document.querySelector("#current-units");
-
-  celcius.classList.remove("active");
-  faren.classList.add("active");
-
-  let tempF = (tempC * 9) / 5 + 32;
-  temp.innerHTML = Math.round(tempF);
-  unit.innerHTML = " ºF";
-}
-
-let tempC = null;
-
-let makeCel = document.querySelector("#celcius");
-makeCel.addEventListener("click", changeToC);
-
-let makeFar = document.querySelector("#faren");
-makeFar.addEventListener("click", changeToF);
 
 searchCity("Sydney");
 displayForecast();
